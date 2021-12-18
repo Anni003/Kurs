@@ -473,8 +473,36 @@ footer{
 }
 
 .button-inner{
-    padding-top: 30px;
+    padding-top: 10px;
     text-align: center;
+}
+
+.sss{
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+}
+
+.sss-1{
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: bold;
+        color: rgba(78, 77, 77, 0.924);
+        text-align: justify;
+}
+
+.sss:hover{
+    color: #fce38a;
+}
+
+.pagin{
+    padding-bottom: 10px;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
 }
 
 .table{

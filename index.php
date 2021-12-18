@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
+    $nav1='Search';
+    $nav2='About';
+    $nav3='Service';
+    $nav4='Contact';
+
     require("head.php");
+    require("header.php");
 ?>
-<header class="header">
-    <div class="container">
-        <div class="header_inner">
-            <div>
-                <a class="header_logo" href="#map">TraVel</a>
-            </div>
-            <nav class="nav">
-                <a class="nav_link" href="#">Search</a>
-                <a class="nav_link" href="#section">About</a>
-                <a class="nav_link" href="#section-2">Service</a>
-                <a class="nav_link" href="#cont">Contact</a>
-            </nav>
-        </div>
-    </div>
-</header>
 <body>
     <div class="intro">
         <div class="container">
@@ -55,19 +44,19 @@
             <div class="about">
                 <div class="about-item">
                     <div class="about_img">
-                        <img class="img" src="../New/images/number_1.jpg" alt="">
+                        <img class="img" src="images/number_1.jpg" alt="">
                     </div>
                     <div class="about_text">Музеи и галереи</div>
                 </div>
                 <div class="about-item">
                     <div class="about_img">
-                        <img class="img" src="../New/images/number_2.jpg" alt="">
+                        <img class="img" src="images/number_2.jpg" alt="">
                     </div>
                     <div class="about_text">Дворцы и памятники культуры</div>
                 </div>
                 <div class="about-item">
                     <div class="about_img">
-                        <img class="img" src="../New/images/number_3.jpg" alt="">
+                        <img class="img" src="images/number_3.jpg" alt="">
                     </div>
                     <div class="about_text">Объекты мирового наследия</div>
                 </div>
@@ -113,34 +102,34 @@
 
             <div class="services">
                 <div class="service-item">
-                    <img class="service-icon" src="../New/images/html5.png" alt="">
+                    <img class="service-icon" src="images/html5.png" alt="">
                     <div class="service-title">HTML</div>
                     <div class="service-text">Lorem ipsum dolor sit amet, consectetur</div>
                 </div>
                 <div class="service-item">
-                    <img class="service-icon" src="../New/images/CSS3_logo.png" alt="">
+                    <img class="service-icon" src="images/CSS3_logo.png" alt="">
                     <div class="service-title">CSS</div>
                     <div class="service-text">Lorem ipsum dolor sit amet, consectetur</div>
                 </div>
                 <div class="service-item">
-                    <img class="service-icon" src="../New/images/Figma-1-logo.png" alt="">
+                    <img class="service-icon" src="images/Figma-1-logo.png" alt="">
                     <div class="service-title">Figma</div>
                     <div class="service-text">Lorem ipsum dolor sit amet, consectetur</div>
                 </div>
             </div>
             <div class="services">
                 <div class="service-item">
-                    <img class="service-icon-1" src="../New/images/PHP-logo.png" alt="">
+                    <img class="service-icon-1" src="images/PHP-logo.png" alt="">
                     <div class="service-title">PHP</div>
                     <div class="service-text">Lorem ipsum dolor sit amet, consectetur</div>
                 </div>
                 <div class="service-item">
-                    <img class="service-icon-1" src="../New/images/PhpMyAdmin_logo.png" alt="">
+                    <img class="service-icon-1" src="images/PhpMyAdmin_logo.png" alt="">
                     <div class="service-title">phpMyAdmin</div>
                     <div class="service-text">Lorem ipsum dolor sit amet, consectetur</div>
                 </div>
                 <div class="service-item">
-                    <img class="service-icon-2" src="../New/images/javascript-logo.png" alt="">
+                    <img class="service-icon-2" src="images/javascript-logo.png" alt="">
                     <div class="service-title">JavaScript</div>
                     <div class="service-text">Lorem ipsum dolor sit amet, consectetur</div>
                 </div>
