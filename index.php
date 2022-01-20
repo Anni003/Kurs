@@ -14,12 +14,15 @@
                 <h1 class="intro-subtitle">Welcom to...</h1>
                 <h1 class="intro-title">Moscow</h1>
                     <div class="container">
-                        <div class="search-form">
-                            <input type="text" class="search-field" placeholder="Введите округ и найдите места для себя...">
-                            <form method="LINK" action="search_page.php">
-                                <button class="search-btn" >Search</button>
-                            </form>
-                        </div>
+                        <form class="search-form" action="search_page.php" method='post'>
+                            <input type="search" name="search" class="search-field" placeholder="Введите округ и найдите места для себя..." required>
+                            <input type="submit" name="search-btn" class="search-btn" value="   Search   ">
+                        </form>
+                        <?php
+                        if (isset($_POST['submit'])){
+                            $search = $_POST['search'];
+                        }
+                        ?>
                     </div>
                 <a class="btn" href="#section">Learn more</a>
             </div>

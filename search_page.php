@@ -1,22 +1,29 @@
 <?php
     $nav1="";
     $nav2="";
-    $nav3="Learn more about app";
+    $nav3="";
     $nav4="";
 
     require("head.php");
     require("header.php");
     require("connectdb.php");
+ 
 
-    if (isset($_GET['page'])) {
-         $page = isset($_GET['page']) ? $_GET['page']:1;
-    }
-    else $page=1;
-    $limit = 3;
-    $from = $limit * ($page - 1);
-    
-    $result = mysqli_query($connect, "SELECT * FROM Travel LIMIT $from,$limit");
-   
+    // if (isset($_GET['page'])) {
+    //      $page = isset($_GET['page']) ? $_GET['page']:1;
+    // }
+    // else $page=1;
+    // $limit = 3;
+    // $from = $limit * ($page - 1);
+    // $result = mysqli_query($connect, "SELECT * FROM Travel WHERE Big_region='$search' LIMIT $from,$limit");
+
+    // if (isset($_POST['search'])) {
+    //     $search = $_POST['search'];
+    //     $result = mysqli_query($connect, "SELECT * FROM Travel WHERE Big_region='$search' LIMIT $from,$limit");
+    // }
+    // else 
+    $result = mysqli_query($connect, "SELECT * FROM Travel");
+
 ?>
 <body>
     <div class="intro">
@@ -24,7 +31,7 @@
             <div class="intro_inner">
                 <div class="container">
                     <p class="info-text">Result</p>
-                    <?php
+                    <?php 
                     while ($travel = mysqli_fetch_assoc($result)) {
                     ?>
                     <div class="table">
@@ -47,27 +54,6 @@
                             </div>
                         </div>
                     </div>
-                    <?php
-                    }
-                    $result = mysqli_query($connect, "SELECT COUNT(*) as count FROM Travel");
-                    $count = mysqli_fetch_assoc($result)['count'];
-                    $pagesCount = ceil($count / $limit);
-                    ?>
-                </div>
-                <div class="pagin">
-                     <?php
-                        if($page <> 1){
-                            $prev = $page - 1;
-                            echo "<a class='sss' href=\"?page=$prev\">ᐊ</a>    ";
-                        }
-                        else echo "<a class='sss-1' href='' disabled>ᐊ</a>    ";
-                        print_r($page);
-                        if($page <>  $pagesCount){
-                            $next = $page + 1;
-                            echo "    <a class='sss' href=\"?page=$next\">ᐅ</a> ";
-                            }
-                        else  echo " <a class='sss-1' href='' disabled>ᐅ</a>    ";
-                    ?>
                 </div>
                 <div class="button-inner">     
                      <form method="LINK" action="index.php">
