@@ -1,37 +1,29 @@
 <?php
-    $nav1="";
-    $nav2="";
-    $nav3="";
-    $nav4="";
+    $nav1='';
+    $nav2='';
+    $nav3='';
+    $nav4='';
+    $auth='Войти';
+
 
     require("head.php");
     require("header.php");
     require("connectdb.php");
- 
-
-    // if (isset($_GET['page'])) {
-    //      $page = isset($_GET['page']) ? $_GET['page']:1;
-    // }
-    // else $page=1;
-    // $limit = 3;
-    // $from = $limit * ($page - 1);
-    // $result = mysqli_query($connect, "SELECT * FROM Travel WHERE Big_region='$search' LIMIT $from,$limit");
-
-    // if (isset($_POST['search'])) {
-    //     $search = $_POST['search'];
-    //     $result = mysqli_query($connect, "SELECT * FROM Travel WHERE Big_region='$search' LIMIT $from,$limit");
-    // }
-    // else 
-    $result = mysqli_query($connect, "SELECT * FROM Travel");
-
+    
+    if (isset($_POST['search'])) {
+        $search = $_POST['search'];
+        $result = mysqli_query($connect, "SELECT * FROM Travel WHERE Big_region='$search'");
+    }
+    else $result = mysqli_query($connect, "SELECT * FROM Travel");
+   
 ?>
-<body>
-    <div class="intro">
+<body id="search-intro">
+    <div class="intro-1">
         <div class="container">
             <div class="intro_inner">
                 <div class="container">
                     <p class="info-text">Result</p>
-                    <?php 
+                    <?php
                     while ($travel = mysqli_fetch_assoc($result)) {
                     ?>
                     <div class="table">
@@ -54,6 +46,9 @@
                             </div>
                         </div>
                     </div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="button-inner">     
                      <form method="LINK" action="index.php">
@@ -64,7 +59,4 @@
         </div>
     </div>
 </body>
-<!-- <?php
-    require("footer.php");
-?> -->
 </html>

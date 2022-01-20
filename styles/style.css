@@ -37,6 +37,24 @@ h1, h2, h3, h4, h5, h6{
     background-size: cover;
 }
 
+#search-intro{
+    background: url("../images/moskau_2.jpg") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.intro-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 35px;
+    padding-bottom: 40px;
+}
+
 .intro_inner{
     width: 100%;
     max-width: 880px;
@@ -472,8 +490,28 @@ footer{
     border-color: #fce38a;
 }
 
+.btn-enter{
+    display: inline-block;
+    vertical-align: top;
+
+    color: rgb(231, 164, 190);
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+
+    transition: color 0.1s linear;
+    background: none;
+}
+
+.btn-enter:hover{
+    color: #fce38a;
+    border-color: #fce38a;
+}
+
 .button-inner{
-    padding-top: 10px;
+    padding-top: 15px;
     text-align: center;
 }
 
@@ -560,4 +598,54 @@ footer{
     font-family: 'Kaushan Script', cursive;
     padding-top: 20px;
     margin-bottom: 15px;
+}
+
+.signup{
+    text-align: center;
+    padding-top: 170px;
+}
+
+.container-auth{
+    width: 100%;
+    max-width: 900px;
+    background-color: #000000;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius:15px;
+    margin: 0 auto;
+}
+
+.sing-inp{
+    padding-bottom: 3px;
+    padding-top: 3px;
+    width: 500px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    background-color: rgb(246, 230, 230);
+    border-radius: 3px;
+}
+
+.sign-form{
+    padding-top: 20px;
+    padding-bottom: 35px;
+}
+
+.link-color{
+    text-decoration: none;
+    color: rgb(231, 164, 190);
+}
+
+.link-color:hover{
+    color: #fce38a;
+    text-decoration: underline;
+}
+
+.login{
+    text-align: center;
+    padding-top: 190px;
+}
+
+.section_text-error{
+    font-size: 16px;
+    color: rgb(212, 54, 54);
 }

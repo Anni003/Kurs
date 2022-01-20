@@ -3,6 +3,7 @@
     $nav2='About';
     $nav3='Service';
     $nav4='Contact';
+    $auth='Войти';
 
     require("head.php");
     require("header.php");
