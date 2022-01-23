@@ -649,3 +649,11 @@ footer{
     font-size: 16px;
     color: rgb(212, 54, 54);
 }
+
+.information-1{
+    font-size: 14px;
+    text-align: right;
+    padding-bottom: 5px;
+    padding-right: 3px;
+    color: #fce38a;
+}

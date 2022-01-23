@@ -5,15 +5,16 @@ require("connectdb.php");
 
 if(isset($_POST['submit']))
 {
-    $query = mysqli_query($connect,"SELECT id, pass FROM Users WHERE `login`='".mysqli_real_escape_string($connect,$_POST['login'])."' LIMIT 1");
+    $query = mysqli_query($connect,"SELECT * FROM Users WHERE `login`='".$_POST["login"]."' LIMIT 1");
     $login = mysqli_real_escape_string($connect,$_POST['login']);
     $data = mysqli_fetch_assoc($query);
-
+    
     if($data['pass'] === md5(md5($_POST['password'])))
-    {
-        $_SESSION["login"]=$login;
-        header("Location: index.php"); exit();
-    }
+    { 
+        session_start();
+        $_SESSION["user"] = $_POST['login']; 
+        header("Location: index.php"); exit();  
+    }   
 }
 ?>
 

@@ -1,9 +1,16 @@
 <?php
+require("session.php");
     $nav1='Search';
     $nav2='About';
     $nav3='Service';
     $nav4='Contact';
-    $auth='Войти';
+
+    if(isset($user) && $user!=''){
+        $auth = 'Выйти';
+    }
+    else {
+        $auth = 'Войти';
+    }
 
     require("head.php");
     require("header.php");
