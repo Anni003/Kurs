@@ -23,7 +23,7 @@ require("session.php");
                 <h1 class="intro-title">Moscow</h1>
                     <div class="container">
                         <form class="search-form" action="search_page.php" method='post'>
-                            <input type="search" name="search" class="search-field" placeholder="Введите округ и найдите места для себя..." required>
+                            <input type="search" name="search" class="search-field" placeholder="Введите район и найдите места для себя..." required>
                             <input type="submit" name="search-btn" class="search-btn" value="   Search   ">
                         </form>
                         <?php
@@ -51,7 +51,7 @@ require("session.php");
                     </p>
                 </div>
             </div>
-
+            
             <div class="about">
                 <div class="about-item">
                     <div class="about_img">

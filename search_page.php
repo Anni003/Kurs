@@ -1,25 +1,36 @@
-<?php
+<?php 
+   require("session.php");
     $nav1='';
     $nav2='';
     $nav3='';
     $nav4='';
-
-    if (isset($_SESSION["user"])){
-        $auth='Выйти';
-     }
-     else $auth='Войти';
-
+ 
+    if(isset($user) && $user!=''){
+        $auth = 'Выйти';
+    }
+    else {
+        $auth = 'Войти';
+    }
 
     require("head.php");
     require("header.php");
     require("connectdb.php");
+
+
+    $_SESSION["search"] = $_POST['search'];
+    $search = $_SESSION["search"];
     
-    if (isset($_POST['search'])) {
-        $search = $_POST['search'];
-        $result = mysqli_query($connect, "SELECT * FROM Travel WHERE Region LIKE '%$search%'");
+    $result = mysqli_query($connect, "SELECT * FROM Travel INNER JOIN Images ON Travel.Travel_id=Images.Travel_id WHERE Region LIKE '%$search%'");
+
+
+   $query = mysqli_query($connect, "SELECT * FROM Users WHERE login='$user'");
+   $data = mysqli_fetch_assoc($query);
+
+    if(isset($_POST['comm']))
+    {
+        mysqli_query($connect,"INSERT INTO Comment SET name='".$_POST["place"]."', content='".$_POST["content"]."', user_id='". $_SESSION["id"]."', user_login='". $_SESSION["login"]."'");
+        header("Location: all-comments.php"); exit(); 
     }
-    else $result = mysqli_query($connect, "SELECT * FROM Travel");
-   
 ?>
 <body id="search-intro">
     <div class="intro-1">
@@ -28,29 +39,56 @@
                 <div class="container">
                     <p class="info-text">Result</p>
                     <?php
-                    while ($travel = mysqli_fetch_assoc($result)) {
+                    while ($travel = mysqli_fetch_assoc($result)) {   
                     ?>
                     <div class="table">
-                        <div class="left-col">
+                        <div class="left-col"> 
                             <div class="title">
-                            <?php echo $travel["Name"]; ?>
+                                <?php echo $travel["Name"]; ?>
                             </div>
+                            <?php 
+                                $_SESSION["Name"]=$travel["Name"];
+                                $_SESSION["id"]=$data["id"];
+                                $_SESSION["login"]=$data["login"];
+                            ?>
                             <div class="information">
-                            <?php echo $travel["Status"]; ?>
+                                <?php echo $travel["Status"]; ?>
                             </div>
                          </div>
                         <div class="right-col">
                             <div class="btn-table">
-                                <form method="LINK" action="index.php">
-                                    <button class="more">Подробнее</button>
-                                </form>
+                            <?php if(isset($user) && $user!=''):?> 
+                                <a href="#openModal" class="more">Оставить отзыв</a>
+                                <div id="openModal" class="modal">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">Поделитесь своим мнением с другими</h3>
+                                                <a href="#close" title="Close" class="close">×</a>
+                                            </div>
+                                            <div class="modal-body">    
+                                                <form method="post">
+                                                <div class="sign-form">
+                                                    <input class="sing-inp_comm" type="text" name="place" id="place" placeholder="Введите название места..."><br>
+                                                    <textarea class="sing-inp_comm" type="text" name="content" id="content-comm" placeholder="Введите отзыв..." required></textarea>
+                                                </div>
+                                                <div class="input">
+                                                    <input class="btn-2" name="comm" type="submit" value="Оставить отзыв">
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif;?>                
                             </div>
-                            <div class="map-table">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14144.122619249387!2d37.69155493732822!3d55.78105603653528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b53572a0c77ddf%3A0x129e57fa4f32a530!2z0JbQuNC70L7QuSDQtNC-0LwgWElYINCy0LXQutCw!5e0!3m2!1sru!2sru!4v1639638303955!5m2!1sru!2sru" width="430" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <div style="width: 430px; height: 100px; margin-top: 5px;">
+                                <?php echo $travel["Image"]; ?>
                             </div>
-                            <div class="information-1">
-                            <?php echo $travel["Region"]; ?>
-                            </div>
+                                <div class="information-1">
+                                    <?php echo $travel["Region"];?><br>
+                                    <?php echo $travel["Address"];?>
+                                </div>
                         </div>
                     </div>
                     <?php

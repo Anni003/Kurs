@@ -18,8 +18,10 @@ echo'
                <a class="nav_link" href="#">' . $nav1 . '</a>
                <a class="nav_link" href="#section">' . $nav2 . '</a>
                <a class="nav_link" href="#section-2">' . $nav3 . '</a>
-               <a class="nav_link" href="#cont">' . $nav4 . '</a>';
+               <a class="nav_link" href="#cont">' . $nav4 . '</a>
+               <a class="nav_link" href="all-comments.php">Comment</a>';
 ?>
+
 <?php if(isset($user) && $user!=''):?> 
                 <form class=nav_link method="LINK" action="logout.php">
                     <input type="submit" class="btn-enter" value="<?php echo $auth; ?>">  
