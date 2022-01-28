@@ -16,7 +16,6 @@
     require("header.php");
     require("connectdb.php");
 
-
     $_SESSION["search"] = $_POST['search'];
     $search = $_SESSION["search"];
     
@@ -26,18 +25,46 @@
    $query = mysqli_query($connect, "SELECT * FROM Users WHERE login='$user'");
    $data = mysqli_fetch_assoc($query);
 
+   $query1 = mysqli_query($connect, "SELECT * FROM Region WHERE Name_reg LIKE '%$search%'");
+   $data1 = mysqli_fetch_assoc($query1);
+
     if(isset($_POST['comm']))
     {
         mysqli_query($connect,"INSERT INTO Comment SET name='".$_POST["place"]."', content='".$_POST["content"]."', user_id='". $_SESSION["id"]."', user_login='". $_SESSION["login"]."'");
         header("Location: all-comments.php"); exit(); 
     }
 ?>
+
+<script type="text/javascript">
+    ymaps.ready(function (){
+        var myMap = new ymaps.Map("map-1", {
+            center: <?php echo $data1["Coordinates"]; ?>,
+            zoom: 15
+            
+        },{
+            searchControlProvider: 'yandex#search'
+        }),
+
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+            hintContent: 'Район',
+            balloonContent: <?php echo $data1["Coordinates"]; ?>
+        }, {
+            iconLayout: 'default#image',
+            iconImageHref: 'images/icon.png',
+            iconImageSize: [30, 37],
+            iconImageOffset: [-5, -38]
+        });
+        myMap.geoObjects.add(myPlacemark)
+    });
+</script>
+
 <body id="search-intro">
     <div class="intro-1">
         <div class="container">
             <div class="intro_inner">
                 <div class="container">
                     <p class="info-text">Result</p>
+                        <div id="map-1" style="margin-left:150px; width: 600px; height: 400px; margin-bottom:20px"></div>
                     <?php
                     while ($travel = mysqli_fetch_assoc($result)) {   
                     ?>
@@ -82,7 +109,7 @@
                                 </div>
                             <?php endif;?>                
                             </div>
-                            <div style="width: 430px; height: 100px; margin-top: 5px;">
+                            <div style="max-width: 430px; height: 100px; margin-top: 5px; width:100%">
                                 <?php echo $travel["Image"]; ?>
                             </div>
                                 <div class="information-1">

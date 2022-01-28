@@ -346,7 +346,9 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .place-img{
-        max-width: 430px;
+        /* max-width: 430px; */
+        max-width: 210px;
+        width: 100%;
         max-height: 100px;
 }
 
@@ -867,7 +869,3 @@ tbody{
 #content-comm{
     height: 100px;
 }
-
-#div1{
-    display: none;
-  }
